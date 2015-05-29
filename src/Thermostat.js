@@ -29,7 +29,19 @@ Thermostat.prototype.powerSave = function() {
       };
     };
   };
-  
+
 Thermostat.prototype.resetButton = function() {
       this.temperature = 20;
+};
+
+Thermostat.prototype.colour = function() {
+      if(this.temperature <= 18){
+        this.colour = "green";
+      }
+      else if (this.temperature >= 25){
+        this.colour = "red";
+      }
+      else{
+        this.colour = "yellow";
+      };
 };

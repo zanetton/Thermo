@@ -68,4 +68,26 @@ describe("has an down button", function() {
 
   });
 
+  describe("has colours relating to temperature",function (){
+
+    it("is green at 18 degrees", function() {
+      thermostat.temperature=18;
+      thermostat.colour();
+      expect(thermostat.colour).toEqual("green");
+    });
+
+    it("is yellow if 24 degrees", function() {
+      thermostat.temperature=24;
+      thermostat.colour();
+      expect(thermostat.colour).toEqual("yellow");
+    });
+
+    it("is yellow if 26 degrees", function() {
+      thermostat.temperature=26;
+      thermostat.colour();
+      expect(thermostat.colour).toEqual("red");
+    });
+
+  });
+
 });
