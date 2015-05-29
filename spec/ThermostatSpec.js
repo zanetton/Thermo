@@ -20,19 +20,52 @@ describe("has an up button", function() {
     thermostat.up();
     thermostat.up();
     expect(thermostat.temperature).toEqual(22);
+    });
+    it("can increase by 5 degrees in powersave mode", function() {
+      for (i=1; i<6; i++) {
+        thermostat.up();
+      };
+    expect(thermostat.temperature).toEqual(25);
+    });
+    it("can increase by 12 degrees if not in powersave mode", function() {
+      for (i=1; i<13; i++) {
+        thermostat.powerSaveMode = false;
+        thermostat.up();
+      };
+    expect(thermostat.temperature).toEqual(32);
+    });
+
   });
 
 describe("has an down button", function() {
 
-    it("can decrease by 1 degree ", function() {
+    it("can decrease by 1 degree", function() {
       thermostat.down();
       expect(thermostat.temperature).toEqual(19);
     });
 
-    it("can decrease by 2 degrees ", function() {
+    it("can decrease by 2 degrees", function() {
       thermostat.down();
       thermostat.down();
       expect(thermostat.temperature).toEqual(18);
     });
+
+    it("can decrease by 10 degrees ", function() {
+      for (i=1; i<11; i++) {
+        thermostat.down();
+      };
+    expect(thermostat.temperature).toEqual(10);
+    });
+
   });
+
+  describe("has a reset button", function () {
+
+    it("can set temperature to 20", function() {
+      thermostat.resetButton();
+      expect(thermostat.temperature).toEqual(20);
+    });
+
+  });
+
 });
